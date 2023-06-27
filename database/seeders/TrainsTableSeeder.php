@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Train;
+use Faker\Generator as Faker;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
@@ -13,35 +14,20 @@ class TrainsTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(Faker $faker)
     {
-        $arrTrains = [
-            [
-                "company" => "Trenitalia",
-                "departure_station" => "Rome", 
-                "arrival_station" => "Milan",
-                "departureTime" => "2023-06-28 10:00:00",
-                "arrivalTime" => "2023-06-29 13:30;00",
-                "train_Code" => "43532",
-                "numberOfCarriages" => 6,
-                "in_time" => true,
-                "cancelled" => false,
-            ],
-            [
-                "company" => "Italo",
-                "departure_station" => "Rome", 
-                "arrival_station" => "Naples",
-                "departureTime" => "2023-06-28 10:00:00",
-                "arrivalTime" => "2023-06-29 12:30:00",
-                "train_Code" => "36275",
-                "numberOfCarriages" => 5,
-                "in_time" => false,
-                "cancelled" => true,
-            ],
-        ];
-
-        foreach($arrTrains as $train) {
-            Train::create($train);
+        for ($i = 0; $i < 20; $i++) {
+            Train::create([
+                'company' => $faker->word(),
+                'departure_station' => $faker->words(3, true),
+                'arrival_station' => $faker->words(3, true),
+                'departure_time' => $faker->time(),
+                'arrival_time' => $faker->time(),
+                'train_code' => $faker->bothify('??-########'),
+                'number_of_carriages' => rand(1, 20),
+                'in_time' => $faker->boolean(),
+                'cancelled' => $faker->boolean(),
+            ]);
         }
     }
 }
