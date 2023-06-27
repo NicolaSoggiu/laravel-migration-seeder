@@ -8,18 +8,36 @@
     </head>
     <body>
         <h1 class="text-center text-danger p-4">Today's departures and arrivals : </h1>
-        <ul>
-            @foreach($trains as $train)
-            <li>{{ $train->company }}</li>
-            <li>{{ $train->departure_station }}</li>
-            <li>{{ $train->arrival_station }}</li>
-            <li>{{ $train->departure_time }}</li>
-            <li>{{ $train->arrival_time }}</li>
-            <li>{{ $train->train_Code }}</li>
-            <li>{{ $train->number_of_carriages }}</li>
-            <li>{{ $train->in_time }}</li>
-            <li>{{ $train->cancelled }}</li>
+        <table class="table table-striped table-dark">
+            <thead>
+              <tr>
+                <th scope="col">Company</th>
+                <th scope="col">Departur Station</th>
+                <th scope="col">Arrival Station</th>
+                <th scope="col">Departure Time</th>
+                <th scope="col">Arrival Time</th>
+                <th scope="col">Train code</th>
+                <th scope="col">Number of Carriages</th>
+                <th scope="col">In time</th>
+                <th scope="col">Cancelled</th>
+                
+              </tr>
+            </thead>
+            <tbody>
+                @foreach($trains as $train)
+                    <tr>
+                    <td>{{ $train->company }}</td>
+                    <td>{{ $train->departure_station }}</td>
+                    <td>{{ $train->arrival_station }}</td>
+                    <td>{{ $train->departure_time }}</td>
+                    <td>{{ $train->arrival_time }}</td>
+                    <td>{{ $train->train_Code }}</td>
+                    <td>{{ $train->number_of_carriages }}</td>
+                    <td>{{ $train->in_time }}</td>
+                    <td>{{ $train->cancelled }}</td>
+                </tr>
             @endforeach
-        </ul>
+            </tbody>
+          </table>
     </body>
 </html>
