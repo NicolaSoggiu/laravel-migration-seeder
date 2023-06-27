@@ -6,9 +6,10 @@
         <title>Laravel</title>
         @vite('resources/js/app.js')
     </head>
-    <body>
-        <h1 class="text-center text-danger p-4">Today's departures and arrivals : </h1>
-        <table class="table table-striped table-dark">
+    <body class="bg-dark">
+        <h1 class="text-center text-danger p-3">Today's departures and arrivals : </h1>
+        <div class="container">
+        <table class="table table-striped table-dark border border-warning">
             <thead>
               <tr>
                 <th scope="col">Company</th>
@@ -39,5 +40,6 @@
             @endforeach
             </tbody>
           </table>
+        </div>
     </body>
 </html>
